@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,500;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/*Header--------------------------------------------------------------------------------------*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 20px;
+
+
+}
+
+.logotipo {
+    height: 26px;
+}
+
+
+.menu ul {
+    margin-top: 20px;
+    padding: 0px;
+}
+
+.menu ul li {
+    display: inline;
+    list-style: none;
+}
+
+.menu li a {
+    color: #0b64a5;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0px 3px;
+}
+
+.menu li a:hover {
+    color: #a10062;
+}
+
+.nuevo {
+    width: 220px;
+}
+
+.nuevoSiniestro {
+    background-color: #be0464;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    float: right;
+}
+
+.nuevoSiniestro:hover {
+    background-color: #a10062;
+    color: #fff;
+}
+
+/*Header--------------------------------------------------------------------------------------*/
+
+/*Main--------------------------------------------------------------------------------------*/
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #be0464;
+    box-shadow: 5px 0px 0px rgba(0, 0, 0, 0.5);
+
+}
+
+main h1 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+main h5 {
+    color: #fff;
+    font-size: 16px;
+}
+
+.buscador {
+    display: flex;
+}
+
+
+.buscador #tipo {
+    width: 100px;
+}
+
+
+.buscador #numero {
+    width: 600px;
+}
+
+.buscador {
+    background-color: #a10062;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.buscador:hover {
+    background-color: #fff;
+    color: #a10062;
+    border-radius: 20px;
+}
+
+
+/*Panel Container--------------------------------------------------------------------------------------*/
+.panel {
+    padding: 30px 0px;
+    display: flex;
+}
+
+.siniestrosActuales h2 {
+    color: #be0464;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.visual {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.visual .color {
+    color: #be0464;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.visual p {
+    padding: 0px 5px;
+}
+
+.form-check-input {
+    margin-top:1px;
+    margin-right: 20px;
+}
+
+
+.actualizarSiniestro {
+    background-color: #be0464;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.actualizarSiniestro:hover {
+    background-color: #a10062;
+    color: #fff;
+}
+
+
+
+.gestor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius:5px;
+    box-shadow: 2px 2px 10px rgba(129, 129, 129, 0.2);
+}
+
+
+.gestor h2 {
+    color: #be0464;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.gestor img {
+    width: 180px;
+}
+
+.visualGestor {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.visualGestor .color {
+    color: #be0464;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.visualGestor p {
+    padding: 0px 5px;
+}
+
+
+.limiteTC {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.limiteTC .color {
+    color: #be0464;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.limiteTC p {
+    padding: 0px 5px;
+    color:green;
+    font-weight: 900;
+}
+
+
+/*Main--------------------------------------------------------------------------------------*/
+
+
+/*ChatBot--------------------------------------------------------------------------------------*/
+.chat {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 2;
+
+}
+
+.chat img {
+    width: 65px;
+    height: 100%;
+
+}
+
+/*ChatBot--------------------------------------------------------------------------------------*/
+
+
+/*Footer--------------------------------------------------------------------------------------*/
+footer {
+    background-color: #c9c9c9;
+    color: #1c2023;
+    padding: 35px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+footer p {
+    text-align: center;
+    font-size: 12px;
+}
+
+.aseguradora {
+    height: 25px;
+}
+
+/*Footer--------------------------------------------------------------------------------------*/
