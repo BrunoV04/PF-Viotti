@@ -31,12 +31,66 @@
             </ul>
         </nav>
         <div class="nuevo">
-            <button onclick=agregarSiniestro() type="button" class="btn nuevoSiniestro">Nuevo Siniestro</button>
+            <button type="button" class="btn nuevoSiniestro" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo
+                Siniestro</button>
         </div>
     </header>
 
+    <!--Formulario nuevo siniestro----------------------------------------------------------------------->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 tituloModal" id="exampleModalLabel">Ingresar datos de nuevo siniestro
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Ingresar DNI del nuevo siniestrado</label>
+                            <input type="number" class="form-control" id="dniS" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ingresar Nombre y Apellido cómo figura en su DNI</label>
+                            <input type="text" class="form-control" id="nombreap" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ingresar nombre del empleador</label>
+                            <input type="text" class="form-control" id="empleador" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ingresar tasa de cobertura</label>
+                            <input type="number" class="form-control" id="tasa" required>
+                        </div>
+                        <button type="submit" class="btn btn-guardar" id="btnGuardar">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+
+    <!--Formulario nuevo siniestro----------------------------------------------------------------------->
+    <!--Formulario error----------------------------------------------------------------------->
+    <div class="modal fade" id="formularioError" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 tituloModal" id="exampleModalLabel">Error en la carga
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="cargaError"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Formulario error----------------------------------------------------------------------->
     <!--Buscador------------------------------------------------------------------------------------------------------>
     <main>
         <h1>Buscador de Siniestro</h1>
@@ -45,7 +99,7 @@
 
 
             <select class="form-select" id="tipo" required>
-                <option selected>Buscar por..</option>
+                <option selected disabled>Buscar por..</option>
                 <option value="1">N° Siniestro</option>
                 <option value="2">DNI</option>
             </select>
@@ -54,12 +108,28 @@
             <input type="number" class="form-control" id="numero" placeholder="Ingresar número..." required>
 
 
-            <button onclick=buscarSiniestro() type="submit" class="btn buscador" id="buscador">Buscar</button>
+            <button type="submit" class="btn buscador" id="buscador">Buscar</button>
 
 
     </main>
-
-
+    <!--Buscador------------------------------------------------------------------------------------------------------>
+    <!--Modal error busqueda----------------------------------------------------------------------->
+    <div class="modal fade" id="modalErrorBusqueda" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 tituloModal" id="exampleModalLabel">Error en la búsqueda
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="resultadoError"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal error busqueda----------------------------------------------------------------------->
     <!--Panel------------------------------------------------------------------------------------------------------>
     <div class="panel container">
         <!--Siniestros------------------------------------------------------------------------------------------------------>
@@ -70,26 +140,33 @@
 
 
             </div>
-            <button onclick=cargarSiniestro() type="button" class="btn actualizarSiniestro">Actualizar lista</button>
+            <div class="botonera">
+                <button type="button" class="btn actualizarSiniestro" id="verSiniestro">Ver
+                    más</button><button type="button" class="btn actualizarSiniestro"
+                    id="actualizarSiniestro">Actualizar lista</button>
+            </div>
         </div>
         <!--Gestor------------------------------------------------------------------------------------------------------>
         <div class="gestor col-md-4">
+            <div class="datos">
             <h2>Panel Gestor:</h2>
+            <div class="datosG">
+                <img src="./img/gestor.svg" alt="Fotografía Gestor">
 
-            <img src="./img/gestor.svg" alt="Fotografía Gestor">
+                <div class="datosGestor">
 
-            <div class="datosGestor">
-
+                </div>
             </div>
             <div class="limiteTC">
-
+                <p class="color">LÍmite disponible TC: </p><p class="actualizarCalculo"></p>
             </div>
+        </div>
         </div>
     </div>
 
     <!--Chat------------------------------------------------------------------------------------------------------>
     <div class="chat">
-        <img src="./img/chat.png" alt="Chatbot">
+        <img src="./img/chat.png" alt="Chatbot" id="chatbot">
     </div>
 
 

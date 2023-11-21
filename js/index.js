@@ -18,42 +18,93 @@ const gestor = [
 
 
 
+//LocalStorage-----------------------------------------------------------------------------------------------------------------------------
+
+
+let recuperarDatosSiniestros = JSON.parse(localStorage.getItem("baseSiniestros"))
+let recuperarDatosGestor = JSON.parse(localStorage.getItem("baseGestor"))
+if(recuperarDatosSiniestros === null){
+localStorage.setItem("baseSiniestros", JSON.stringify(baseSiniestrados))
+}
+if(recuperarDatosGestor === null){
+localStorage.setItem("baseGestor", JSON.stringify(gestor))
+}  
 
 
 
 
 
 
+
+
+
+
+
+
+//LocalStorage-----------------------------------------------------------------------------------------------------------------------------
+
+//Generar N° de Siniestro-----------------------------------------------------------------------------------------------------------------
+const nuevoN = recuperarDatosSiniestros.reduce((acc, numero)=> {numero.nSiniestro
+    if (numero.nSiniestro > acc) {
+        return numero.nSiniestro;
+      } else {
+        return acc
+      }
+},0)
 
 
 //Agregar Siniestro nuevo------------------------------------------------------------------------------------------------------------------
+let dni = document.querySelector("#dniS")
+let nombre = document.querySelector("#nombreap")
+let empleador = document.querySelector("#empleador")
+let tasa = document.querySelector("#tasa")
+let btnGuardar = document.querySelector("#btnGuardar")
+
+btnGuardar.addEventListener("click",()=>{
+    agregarSiniestro()
+})
+
 function agregarSiniestro() {
-    let dni = parseInt(prompt("Ingresar DNI del nuevo siniestrado"))
-    if (!isNaN(dni) && dni !== null) {
-        let nombre = prompt("Ingresar Nombre y Apellido cómo figura en su DNI")
-        if (nombre !== null && nombre !== "") {
-            let empleador = prompt("Ingresar nombre del empleador")
-            if (empleador !== null && empleador !== "") {
-                let tasaCobertura = parseInt(prompt("Ingresar tasa de cobertura"))
+
+    let dniValor = parseInt(dni.value)
+    if (!isNaN(dniValor) && dniValor !== null) {
+        let nombreValor = nombre.value
+        if (nombreValor !== null && nombreValor !== "") {
+            let empleadorValor = empleador.value
+            if (empleadorValor !== null && empleadorValor !== "") {
+                let tasaCobertura = parseInt(tasa.value)
                 if (!isNaN(tasaCobertura) && tasaCobertura !== null) {
                     //por clase constructora armamos el nuevo siniestro y lo pusheamos al objeto
-                    let agregar = new Siniestrado(dni, nombre, empleador, tasaCobertura)
-                    baseSiniestrados.push(agregar)
+                    let agregar = new Siniestrado(dniValor, nombreValor, empleadorValor, tasaCobertura)
+                    recuperarDatosSiniestros.push(agregar)
+                    localStorage.setItem("baseSiniestros", JSON.stringify(recuperarDatosSiniestros))
                     cargarSiniestro()
+                    calculoLimite()
                 } else {
-                    return alert("Ingrese un monto de Tasa de Cobertura de siniestro válido.\nDebe ser un valor numérico")
+                    let modal = new bootstrap.Modal(document.getElementById('formularioError'));
+                modal.show()
+                let resError = document.querySelector("#cargaError")
+                resError.textContent=`Ingrese un monto de Tasa de Cobertura de siniestro válido. Debe ser un valor numérico`
                 }
             } else {
-                return alert("Ingresar nombre del empleador que contrató la póliza")
+                let modal = new bootstrap.Modal(document.getElementById('formularioError'));
+                modal.show()
+                let resError = document.querySelector("#cargaError")
+                resError.textContent=`Ingresar nombre del empleador que contrató la póliza.`
             }
         } else {
-            return alert("Ingresar Nombre y Apellido")
+            let modal = new bootstrap.Modal(document.getElementById('formularioError'));
+            modal.show()
+            let resError = document.querySelector("#cargaError")
+            resError.textContent=`Ingresar Nombre y Apellido del siniestrado.`
         }
     } else {
-        return alert("Ingresar un DNI válido")
+        let modal = new bootstrap.Modal(document.getElementById('formularioError'));
+        modal.show()
+        let resError = document.querySelector("#cargaError")
+        resError.textContent=`Por favor ingresar un número de DNI válido.`
     }
 }
-
 
 //Agregar Siniestro nuevo------------------------------------------------------------------------------------------------------------------
 
@@ -65,16 +116,31 @@ function agregarSiniestro() {
 
 
 //buscar siniestro-----------------------------------------------------------------------------------------------------------------------------
+let barraBusqueda = document.querySelector("#numero")
+
 function buscarSiniestro() {
-    let buscador = parseInt(prompt("Ingresar número de siniestro para efectuar la busqueda"))
-    let busqueda = baseSiniestrados.find((buscar) => buscar.nSiniestro === buscador)
+    let buscador = parseInt(barraBusqueda.value)
+    let busqueda = recuperarDatosSiniestros.find((buscar) => buscar.nSiniestro === buscador)
     if (busqueda !== undefined) {
         cargarBusqueda(busqueda)
     } else {
-        return alert("No coincide con ningun número de siniestro")
+        let modal = new bootstrap.Modal(document.getElementById('modalErrorBusqueda'));
+        modal.show()
+        resultadoError()
+    }
+
+    function resultadoError(){
+        let resError = document.querySelector("#resultadoError")
+        if(busqueda!==""){
+        resError.textContent=`La búsqueda por  del N°${buscador} no coincide con ningún siniestro. Vuelva a intentarlo.`
+    }else{
+        resError.textContent=`Por favor ingresar un número de siniestro.` 
+    }
     }
    
 }
+
+
 
 const contenedor3 = document.querySelector("div.visualSiniestros")
 const titBusqueda = document.querySelector("h2.cambiarTit")
@@ -93,6 +159,12 @@ function cargarBusqueda(siniestro) {
     titBusqueda.textContent = "Resultado de búsqueda:"
   }
 
+
+let btnBuscar = document.querySelector("#buscador")
+btnBuscar.addEventListener("click", buscarSiniestro)  
+
+let btnActualizar = document.querySelector("#actualizarSiniestro")
+btnActualizar.addEventListener("click", cargarSiniestro)  
 
 
 //buscar siniestro-----------------------------------------------------------------------------------------------------------------------------
@@ -120,7 +192,7 @@ const contenedor = document.querySelector("div.visualSiniestros")
 function crearList(siniestro) {
     return `
     <div class="container visual">
-    <input class="form-check-input" type="checkbox" value="" id="${siniestro.nSiniestro}"><p class="color">N° de Siniestro:</p><p> ${siniestro.nSiniestro} </p><p class="color">Nombre: <p>${siniestro.nombre} </p><p class="color">Empleador: <p>${siniestro.empleador} </p><p class="color">TC: <p>$ ${siniestro.tasaCobertura}</p>
+    <input class="form-check-input" type="checkbox" value="" id="${siniestro.nSiniestro}"><p class="color">N° de Siniestro:</p><p> ${siniestro.nSiniestro} </p><p class="color">Nombre: <p>${siniestro.nombre} </p><p class="color">TC: <p>$ ${siniestro.tasaCobertura}</p>
     </div>
     `
 
@@ -128,9 +200,9 @@ function crearList(siniestro) {
 
 
 function cargarSiniestro() {
-    if (baseSiniestrados.length > 0) {
+    if (recuperarDatosSiniestros.length > 0) {
         contenedor.innerHTML = ""
-        baseSiniestrados.forEach((siniestro) => contenedor.innerHTML += crearList(siniestro))
+        recuperarDatosSiniestros.forEach((siniestro) => contenedor.innerHTML += crearList(siniestro))
     }
 }
 
@@ -153,9 +225,9 @@ function nuevoGestor(gestorGuardado) {
 
 
 function crearGestor() {
-    if (gestor.length > 0) {
+    if (recuperarDatosGestor.length > 0) {
         contenedorGestor.innerHTML = ""
-        gestor.forEach((gestorGuardado) => contenedorGestor.innerHTML += nuevoGestor(gestorGuardado))
+        recuperarDatosGestor.forEach((gestorGuardado) => contenedorGestor.innerHTML += nuevoGestor(gestorGuardado))
     }
 }
 
@@ -163,16 +235,39 @@ function crearGestor() {
 
 
 //Limite disponible TC--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-let limiteTC = document.querySelector("div.limiteTC")
+let actualizarCalculo = document.querySelector("p.actualizarCalculo")
+
 function calculoLimite(){
-let calculoLimite = baseSiniestrados.reduce((acc, sumaTC)=> acc + sumaTC.tasaCobertura,0)
+let calculoLimite = recuperarDatosSiniestros.reduce((acc, sumaTC)=> acc + sumaTC.tasaCobertura,0)
 let calculoFinal = parseInt(1525000-calculoLimite)
 if(calculoFinal !== null && calculoFinal>=0){
-    limiteTC.innerHTML += `<p class="color">LÍmite disponible TC: </p><p>$ ${calculoFinal}</p>`
+    actualizarCalculo.innerHTML = `$ ${calculoFinal}`
 }else{
-
+    actualizarCalculo.innerHTML = `<style="color:red">$ ${calculoFinal}</style`
+}
 }
 
-}
+
 
 //Cargar gestor en el DOM--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+//Ver más datos--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+let masDatos
+document.addEventListener('DOMContentLoaded', function() {
+  masDatos = document.querySelectorAll('input[type="checkbox"]');
+});
+
+
+
+//ChatBot--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+let chatbot = document.querySelector("#chatbot")
+chatbot.addEventListener("mouseenter", ()=>{
+    chatbot.title="¿Necesitás soporte técnico? Escribinos"
+})

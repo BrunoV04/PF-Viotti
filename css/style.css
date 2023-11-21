@@ -68,6 +68,28 @@ header {
 
 /*Header--------------------------------------------------------------------------------------*/
 
+/*ModalNuevoSiniestro------------------------------------------------------------------------*/
+.tituloModal {
+    color: #be0464;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.btn-guardar {
+    background-color: #a10062;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.btn-guardar:hover {
+    background-color: #fff;
+    color: #a10062;
+    border-radius: 20px;
+}
+
+/*ModalNuevoSiniestro------------------------------------------------------------------------*/
 /*Main--------------------------------------------------------------------------------------*/
 main {
     display: flex;
@@ -125,6 +147,7 @@ main h5 {
 .panel {
     padding: 30px 0px;
     display: flex;
+    align-items: flex-start;
 }
 
 .siniestrosActuales h2 {
@@ -150,7 +173,7 @@ main h5 {
 }
 
 .form-check-input {
-    margin-top:1px;
+    margin-top: 1px;
     margin-right: 20px;
 }
 
@@ -172,22 +195,33 @@ main h5 {
 
 .gestor {
     display: flex;
-    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(129, 129, 129, 0.2);
+}
+
+.datos {
+    display: block;
     justify-content: center;
     align-items: center;
-    border-radius:5px;
-    box-shadow: 2px 2px 10px rgba(129, 129, 129, 0.2);
 }
 
 
 .gestor h2 {
+    padding: 30px;
     color: #be0464;
     font-size: 18px;
     font-weight: 900;
+    height: 80px;
 }
 
-.gestor img {
-    width: 180px;
+.datosG {
+    display: flex;
+}
+
+.datosG img {
+    width: 140px;
+    margin-right: 20px;
+    margin-left: 30px;
 }
 
 .visualGestor {
@@ -210,9 +244,9 @@ main h5 {
 
 .limiteTC {
     display: flex;
-    flex-direction: column;
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: 30px;
 }
 
 .limiteTC .color {
@@ -223,7 +257,7 @@ main h5 {
 
 .limiteTC p {
     padding: 0px 5px;
-    color:green;
+    color: green;
     font-weight: 900;
 }
 
@@ -243,6 +277,7 @@ main h5 {
 .chat img {
     width: 65px;
     height: 100%;
+    cursor:pointer;
 
 }
 
