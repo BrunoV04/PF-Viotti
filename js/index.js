@@ -192,10 +192,10 @@ const contenedor = document.querySelector("div.visualSiniestros")
 function crearList(siniestro) {
     return `
     <div class="container visual">
-    <input class="form-check-input" type="checkbox" value="" id="${siniestro.nSiniestro}"><p class="color">N° de Siniestro:</p><p> ${siniestro.nSiniestro} </p><p class="color">Nombre: <p>${siniestro.nombre} </p><p class="color">TC: <p>$ ${siniestro.tasaCobertura}</p>
+    🩸🩺<p class="color">N° de Siniestro:</p><p> ${siniestro.nSiniestro} </p><p class="color">Nombre: <p>${siniestro.nombre} </p><p class="color">TC: <p>$ ${siniestro.tasaCobertura}</p><button type="button" class="btn verSiniestro" id="${siniestro.nSiniestro}">Ver
+    más</button>
     </div>
     `
-
 }
 
 
@@ -203,6 +203,7 @@ function cargarSiniestro() {
     if (recuperarDatosSiniestros.length > 0) {
         contenedor.innerHTML = ""
         recuperarDatosSiniestros.forEach((siniestro) => contenedor.innerHTML += crearList(siniestro))
+        verMas()
     }
 }
 
@@ -259,15 +260,49 @@ if(calculoFinal !== null && calculoFinal>=0){
 
 
 //Ver más datos--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-let masDatos
-document.addEventListener('DOMContentLoaded', function() {
-  masDatos = document.querySelectorAll('input[type="checkbox"]');
-});
+function verMas(){
+    let verMas = document.querySelectorAll(".verSiniestro")
+    verMas.forEach((boton)=>{
+        boton.addEventListener("click", (e)=> {
+        let id = parseInt(e.target.id)
+        let verSiniestro = recuperarDatosSiniestros.find((ver)=> ver.nSiniestro === id)
+        let modal = new bootstrap.Modal(document.getElementById('modalVerMas'));
+        if(verSiniestro!==undefined){
+            modal.show()
+            modalVerMas()
+        }
+        function modalVerMas(){
+            let tituloVerMas = document.querySelector("#tituloVerMas")
+            let verMas = document.querySelector("#verMas")
+            tituloVerMas.innerHTML=`Siniestro N°${verSiniestro.nSiniestro}`
+            verMas.innerHTML=
+           `DNI del Siniestrado: <strong>${verSiniestro.dni}</strong></br>
+            Nombre y Apellido: <strong>${verSiniestro.nombre}</strong></br>
+            Empleador a cargo de la póliza: <strong>${verSiniestro.empleador}</strong></br>
+            Tipo de enfermedad: <strong>${verSiniestro.tipo}</strong></br>
+            Tasa de Cobertura: <strong>$${verSiniestro.tasaCobertura}</strong></br></br>
+            <button type="button" class="btn actualizarSiniestro" id="actualizarSiniestro">Borrar Siniestro</button>
+            `
+            
+        }
+    
+    })})}
 
 
 
 //ChatBot--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 let chatbot = document.querySelector("#chatbot")
 chatbot.addEventListener("mouseenter", ()=>{
-    chatbot.title="¿Necesitás soporte técnico? Escribinos"
+    Toastify({
+
+        text: "Hola, soy ProtecBot, ¿en qué puedo ayudarte?",
+        duration: 3000,
+        position: "right",
+        gravity:"bottom",
+        style: {
+            background: "linear-gradient(to right, #be0464, #a10062)",
+            color:"#fff",
+          },
+        className: "mensajePersonalizado"
+        }).showToast();
 })
