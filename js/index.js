@@ -1,34 +1,42 @@
+const URL = "./js/siniestros.json"
+const URL2 ="./js/gestores.json"
 const siniestrosSeleccionados = []
 
 
-const baseSiniestrados = [
-    { nSiniestro: 1234, dni: 37489586, nombre: "Alfredo Perez", empleador: "La Serenisima", tipo: "Accidente de Trabajo", tasaCobertura: 45000 },
-    { nSiniestro: 1235, dni: 28587890, nombre: "Cristian Maidana", empleador: "YPF", tipo: "Accidente de Trabajo", tasaCobertura: 85000 },
-    { nSiniestro: 1236, dni: 32004595, nombre: "Romina Meshler", empleador: "Correo Argentino", tipo: "Enfermedad Profesional", tasaCobertura: 42000 },
-    { nSiniestro: 1237, dni: 16805900, nombre: "Conrrado Viotti", empleador: "La Serenisima", tipo: "Accidente de Trabajo", tasaCobertura: 75000 },
-    { nSiniestro: 1238, dni: 22005808, nombre: "Martina Gutierrez", empleador: "YPF", tipo: "Enfermedad Profesional", tasaCobertura: 95000 },
-    { nSiniestro: 1239, dni: 14005842, nombre: "Baltazar Benitez", empleador: "La Serenisima", tipo: "Enfermedad Profesional", tasaCobertura: 25000 },
-    { nSiniestro: 1240, dni: 17897758, nombre: "Sandra Ribas", empleador: "YPF", tipo: "Enfermedad Profesional", tasaCobertura: 40000 }
-]
+const baseSiniestrados = []
 
 
-const gestor = [
-    { nGestor: 1, dni: 37471890, pass: "demo", nombre: "Pedro Ramos", zona: "Casa Central", limiteCobertura: 1525000 }
-]
+const gestor = []
 
+
+function cargarDatos(){
+    fetch(URL)
+    .then(res => res.json())
+    .then(data =>{ 
+        baseSiniestrados.push(...data)
+        guardarDatosEnLocalStorage()
+    
+    })
+    fetch(URL2)
+    .then(res => res.json())
+    .then(data =>{ 
+        gestor.push(...data)
+        //activo la funcion dentro del then para que sea sincronica una vez que alla pusehado y recien allí guardo en localstorge
+        guardarDatosEnLocalStorage()
+    
+    })
+    }
+    cargarDatos();
 
 
 //LocalStorage-----------------------------------------------------------------------------------------------------------------------------
-
+function guardarDatosEnLocalStorage() {
+    localStorage.setItem("baseSiniestros", JSON.stringify(baseSiniestrados));
+    localStorage.setItem("baseGestor", JSON.stringify(gestor))
+  }
 
 let recuperarDatosSiniestros = JSON.parse(localStorage.getItem("baseSiniestros"))
 let recuperarDatosGestor = JSON.parse(localStorage.getItem("baseGestor"))
-if(recuperarDatosSiniestros === null){
-localStorage.setItem("baseSiniestros", JSON.stringify(baseSiniestrados))
-}
-if(recuperarDatosGestor === null){
-localStorage.setItem("baseGestor", JSON.stringify(gestor))
-}  
 
 
 
