@@ -64,6 +64,14 @@
                             <input type="text" class="form-control" id="empleador" required>
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Ingresar el tipo de enfermedad</label>
+                            <select class="form-select" aria-label="Default select example " id="tEnfermedad" required>
+                                <option disabled selected>Seleccioná el tipo de enfermedad</option>
+                                <option value="Accidente de Trabajo">Accidente de Trabajo</option>
+                                <option value="Enfermedad Profesional">Enfermedad Profesional</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Ingresar tasa de cobertura</label>
                             <input type="number" class="form-control" id="tasa" required>
                         </div>
@@ -198,9 +206,9 @@
     <!--Cargamos los siniestros actuales-->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            cargarSiniestro();
-            crearGestor();
-            calculoLimite();
+                cargarSiniestro();
+                crearGestor();
+                calculoLimite();
         });
     </script>
 </body>
