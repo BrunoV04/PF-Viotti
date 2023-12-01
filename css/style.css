@@ -120,8 +120,8 @@ main h5 {
 
 .buscadorCompleto #numero {
     width: 600px;
-    border-radius:20px;
-    margin-right:5px;
+    border-radius: 20px;
+    margin-right: 5px;
 }
 
 .buscador {
@@ -267,7 +267,7 @@ main h5 {
     font-weight: 700;
     height: 25px;
     border-radius: 15px;
-    padding:2px 12px;
+    padding: 2px 12px;
 }
 
 .verSiniestro:hover {
@@ -290,12 +290,12 @@ main h5 {
 .chat img {
     width: 65px;
     height: 100%;
-    cursor:pointer;
+    cursor: pointer;
 
 }
 
-.mensajePersonalizado{
-    border-radius:30px;
+.mensajePersonalizado {
+    border-radius: 30px;
 }
 
 /*ChatBot--------------------------------------------------------------------------------------*/

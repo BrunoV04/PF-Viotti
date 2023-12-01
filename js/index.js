@@ -1,6 +1,5 @@
 const URL = "./js/siniestros.json"
 const URL2 = "./js/gestores.json"
-const siniestrosSeleccionados = []
 
 
 const baseSiniestrados = []
@@ -307,14 +306,30 @@ function verMas() {
             Empleador a cargo de la póliza: <strong>${verSiniestro.empleador}</strong></br>
             Tipo de enfermedad: <strong>${verSiniestro.tipo}</strong></br>
             Tasa de Cobertura: <strong>$${verSiniestro.tasaCobertura}</strong></br></br>
-            <button type="button" class="btn actualizarSiniestro" id="borrarSiniestro">Borrar Siniestro</button>
+            <button type="submit" class="btn actualizarSiniestro borrarSiniestro" id="${verSiniestro.nSiniestro}">Borrar Siniestro</button>
             `
-
+            borrar()
             }
 
         })
     })
 }
+
+
+//Borrar boton--------------------------------------------------------------------------------------------------------------------------------------------------------------
+function borrar(){
+    let borrar = document.querySelectorAll(".borrarSiniestro")
+    borrar.forEach((boton) => {
+        boton.addEventListener("click", (e) => {
+            let id = parseInt(e.target.id)
+            let borrarDato = recuperarDatosSiniestros.findIndex((borrar) => borrar.nSiniestro === id);
+      
+      if (borrarDato !== -1) {
+        recuperarDatosSiniestros.splice(borrarDato, 1);
+        localStorage.setItem("baseSiniestros", JSON.stringify(recuperarDatosSiniestros));
+        cargarSiniestro()
+      }
+        })})}
 
 
 //ChatBot--------------------------------------------------------------------------------------------------------------------------------------------------------------------
