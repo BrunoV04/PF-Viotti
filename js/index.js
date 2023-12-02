@@ -14,7 +14,6 @@ function cargarDatos() {
         .then(data => {
             baseSiniestrados.push(...data)
             guardarDatosEnLocalStorage()
-
         })
     fetch(URL2)
         .then(res => res.json())
@@ -52,6 +51,7 @@ if (recuperarDatosSiniestros === null || recuperarDatosSiniestros === "") {
 //LocalStorage-----------------------------------------------------------------------------------------------------------------------------
 
 //Generar N° de Siniestro-----------------------------------------------------------------------------------------------------------------
+
 const nuevoN = recuperarDatosSiniestros.reduce((acc, numero) => {
     numero.nSiniestro
     if (numero.nSiniestro > acc) {
@@ -225,10 +225,12 @@ function crearList(siniestro) {
 
 
 function cargarSiniestro() {
+
     if (recuperarDatosSiniestros.length > 0) {
         contenedor.innerHTML = ""
         recuperarDatosSiniestros.forEach((siniestro) => contenedor.innerHTML += crearList(siniestro))
         verMas()
+
     }
 }
 
@@ -281,9 +283,6 @@ function calculoLimite() {
 
 
 
-
-
-
 //Ver más datos--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function verMas() {
     let verMas = document.querySelectorAll(".verSiniestro")
@@ -308,7 +307,7 @@ function verMas() {
             Tasa de Cobertura: <strong>$${verSiniestro.tasaCobertura}</strong></br></br>
             <button type="submit" class="btn actualizarSiniestro borrarSiniestro" id="${verSiniestro.nSiniestro}">Borrar Siniestro</button>
             `
-            borrar()
+                borrar()
             }
 
         })
@@ -317,19 +316,21 @@ function verMas() {
 
 
 //Borrar boton--------------------------------------------------------------------------------------------------------------------------------------------------------------
-function borrar(){
+function borrar() {
     let borrar = document.querySelectorAll(".borrarSiniestro")
     borrar.forEach((boton) => {
         boton.addEventListener("click", (e) => {
             let id = parseInt(e.target.id)
             let borrarDato = recuperarDatosSiniestros.findIndex((borrar) => borrar.nSiniestro === id);
-      
-      if (borrarDato !== -1) {
-        recuperarDatosSiniestros.splice(borrarDato, 1);
-        localStorage.setItem("baseSiniestros", JSON.stringify(recuperarDatosSiniestros));
-        cargarSiniestro()
-      }
-        })})}
+
+            if (borrarDato !== -1) {
+                recuperarDatosSiniestros.splice(borrarDato, 1);
+                localStorage.setItem("baseSiniestros", JSON.stringify(recuperarDatosSiniestros));
+                cargarSiniestro()
+            }
+        })
+    })
+}
 
 
 //ChatBot--------------------------------------------------------------------------------------------------------------------------------------------------------------------
