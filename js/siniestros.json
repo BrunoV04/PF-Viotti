@@ -1,58 +1,58 @@
 [
-    {
-      "nSiniestro": 1234,
-      "dni": 37489586,
-      "nombre": "Alfredo Perez",
-      "empleador": "La Serenisima",
-      "tipo": "Accidente de Trabajo",
-      "tasaCobertura": 45000
-    },
-    {
-      "nSiniestro": 1235,
-      "dni": 28587890,
-      "nombre": "Cristian Maidana",
-      "empleador": "YPF",
-      "tipo": "Accidente de Trabajo",
-      "tasaCobertura": 85000
-    },
-    {
-      "nSiniestro": 1236,
-      "dni": 32004595,
-      "nombre": "Romina Meshler",
-      "empleador": "Correo Argentino",
-      "tipo": "Enfermedad Profesional",
-      "tasaCobertura": 42000
-    },
-    {
-      "nSiniestro": 1237,
-      "dni": 16805900,
-      "nombre": "Conrrado Viotti",
-      "empleador": "La Serenisima",
-      "tipo": "Accidente de Trabajo",
-      "tasaCobertura": 75000
-    },
-    {
-      "nSiniestro": 1238,
-      "dni": 22005808,
-      "nombre": "Martina Gutierrez",
-      "empleador": "YPF",
-      "tipo": "Enfermedad Profesional",
-      "tasaCobertura": 95000
-    },
-    {
-      "nSiniestro": 1239,
-      "dni": 14005842,
-      "nombre": "Baltazar Benitez",
-      "empleador": "La Serenisima",
-      "tipo": "Enfermedad Profesional",
-      "tasaCobertura": 25000
-    },
-    {
-      "nSiniestro": 1240,
-      "dni": 17897758,
-      "nombre": "Sandra Ribas",
-      "empleador": "YPF",
-      "tipo": "Enfermedad Profesional",
-      "tasaCobertura": 40000
-    }
-  ]
+  {
+    "nSiniestro": 1234,
+    "dni": 37489586,
+    "nombre": "Alfredo Perez",
+    "empleador": "La Serenisima",
+    "tipo": "Accidente de Trabajo",
+    "tasaCobertura": 45000
+  },
+  {
+    "nSiniestro": 1235,
+    "dni": 28587890,
+    "nombre": "Cristian Maidana",
+    "empleador": "YPF",
+    "tipo": "Accidente de Trabajo",
+    "tasaCobertura": 85000
+  },
+  {
+    "nSiniestro": 1236,
+    "dni": 32004595,
+    "nombre": "Romina Meshler",
+    "empleador": "Correo Argentino",
+    "tipo": "Enfermedad Profesional",
+    "tasaCobertura": 42000
+  },
+  {
+    "nSiniestro": 1237,
+    "dni": 16805900,
+    "nombre": "Conrrado Viotti",
+    "empleador": "La Serenisima",
+    "tipo": "Accidente de Trabajo",
+    "tasaCobertura": 75000
+  },
+  {
+    "nSiniestro": 1238,
+    "dni": 22005808,
+    "nombre": "Martina Gutierrez",
+    "empleador": "YPF",
+    "tipo": "Enfermedad Profesional",
+    "tasaCobertura": 95000
+  },
+  {
+    "nSiniestro": 1239,
+    "dni": 14005842,
+    "nombre": "Baltazar Benitez",
+    "empleador": "La Serenisima",
+    "tipo": "Enfermedad Profesional",
+    "tasaCobertura": 25000
+  },
+  {
+    "nSiniestro": 1240,
+    "dni": 17897758,
+    "nombre": "Sandra Ribas",
+    "empleador": "YPF",
+    "tipo": "Enfermedad Profesional",
+    "tasaCobertura": 40000
+  }
+]

@@ -37,6 +37,9 @@ let recuperarDatosGestor = JSON.parse(localStorage.getItem("baseGestor"))
 //para no pisar los datos nuevos guardados en localstorage cada vez que recarga
 if (recuperarDatosSiniestros === null || recuperarDatosSiniestros === "") {
     cargarDatos();
+    setTimeout(function () {
+        location.reload();
+    }, 100);
 }
 
 
@@ -50,8 +53,7 @@ if (recuperarDatosSiniestros === null || recuperarDatosSiniestros === "") {
 
 //LocalStorage-----------------------------------------------------------------------------------------------------------------------------
 
-//Generar N° de Siniestro-----------------------------------------------------------------------------------------------------------------
-
+//Generar N° de Siniestro------------------------------------------------------------------------------------------------------------------
 const nuevoN = recuperarDatosSiniestros.reduce((acc, numero) => {
     numero.nSiniestro
     if (numero.nSiniestro > acc) {
@@ -274,7 +276,6 @@ function calculoLimite() {
         actualizarCalculo.innerHTML = `<style="color:red">$ ${calculoFinal}</style`
     }
 }
-
 
 
 //Cargar gestor en el DOM--------------------------------------------------------------------------------------------------------------------------------------------------------------------
