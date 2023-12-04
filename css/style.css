@@ -25,6 +25,9 @@ header {
     height: 26px;
 }
 
+.menu{
+    display:flex;
+}
 
 .menu ul {
     margin-top: 20px;
@@ -112,6 +115,13 @@ main h1 {
 main h5 {
     color: #fff;
     font-size: 16px;
+}
+
+.buscadorArriba {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .buscadorCompleto {
@@ -325,3 +335,16 @@ footer p {
 }
 
 /*Footer--------------------------------------------------------------------------------------*/
+
+
+
+/*Mobile*/
+@media (max-width: 450px) {
+.menu{
+display:none;
+}
+
+.buscadorCompleto #numero {
+    width: 300px;
+}
+}
