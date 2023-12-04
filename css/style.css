@@ -347,4 +347,11 @@ display:none;
 .buscadorCompleto #numero {
     width: 300px;
 }
+.panel{
+    flex-direction: column;
+    padding: 20px 20px;
+}
+.gestor{
+    margin-top:20px;
+}
 }
